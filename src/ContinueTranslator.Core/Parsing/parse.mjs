@@ -3,6 +3,7 @@
 // Output: single process.stdout.write of JSON array of TsFile-shaped objects.
 
 import { Project, SyntaxKind } from "ts-morph";
+import { readFileSync } from "fs";
 
 // ---------------------------------------------------------------------------
 // Cookie extraction
@@ -309,7 +310,11 @@ function walkSourceFile(sourceFile) {
 // Entry point
 // ---------------------------------------------------------------------------
 
-const filePaths = process.argv.slice(2);
+const _args = process.argv.slice(2);
+const _pathsFileArg = _args.find(a => a.startsWith("--paths-file="));
+const filePaths = _pathsFileArg
+  ? JSON.parse(readFileSync(_pathsFileArg.slice("--paths-file=".length), "utf8"))
+  : _args;
 if (filePaths.length === 0) {
   process.stderr.write("parse.mjs: no input files\n");
   process.exit(1);

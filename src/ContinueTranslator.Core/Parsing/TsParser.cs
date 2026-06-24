@@ -93,6 +93,12 @@ internal sealed partial class TsParser
     {
         string scriptPath = Path.Combine(tempDir, ScriptName);
 
+        // Write paths to a JSON file so the command line stays short.
+        // On Windows, CreateProcess has a 32,767-character limit that is easily
+        // exceeded when many long absolute paths are passed as CLI arguments.
+        string pathsFile = Path.Combine(tempDir, "paths.json");
+        File.WriteAllText(pathsFile, JsonSerializer.Serialize(tsFilePaths));
+
         var psi = new ProcessStartInfo("node")
         {
             WorkingDirectory = tempDir,
@@ -103,8 +109,7 @@ internal sealed partial class TsParser
         };
 
         psi.ArgumentList.Add(scriptPath);
-        foreach (string path in tsFilePaths)
-            psi.ArgumentList.Add(path);
+        psi.ArgumentList.Add($"--paths-file={pathsFile}");
 
         using var process = Process.Start(psi)
             ?? throw new InvalidOperationException("Failed to start the node process.");
