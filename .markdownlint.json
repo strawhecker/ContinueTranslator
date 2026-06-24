@@ -1,0 +1,11 @@
+{
+  "default": true,
+  "MD013": { "line_length": 300, "code_blocks": false },
+  "MD002": true,
+  "MD003": { "style": "atx" },
+  "MD004": { "style": "dash" },
+  "MD012": false,
+  "MD018": false,
+  "MD033": false,
+  "MD041": false
+}

@@ -1,0 +1,7 @@
+{
+  "axios":         "System.Net.Http.HttpClient",
+  "node-fetch":    "System.Net.Http.HttpClient",
+  "ws":            "System.Net.WebSockets.ClientWebSocket",
+  "uuid":          "System.Guid",
+  "events":        "System.EventHandler"
+}

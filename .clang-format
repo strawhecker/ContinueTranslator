@@ -1,0 +1,60 @@
+# Project clang-format configuration tailored for Visual Studio 2022 / MSVC v143 / C++20
+# Matches CONTRIBUTING.md defaults: 4-space indent, 300 column limit, no tabs.
+BasedOnStyle: GNU
+IndentWidth: 4
+TabWidth: 4
+UseTab: Never
+ColumnLimit: 300
+
+# Pointer/reference alignment and spacing
+PointerAlignment: Left
+DerivePointerAlignment: false
+
+# Braces & blocks
+BreakBeforeBraces: Allman
+AllowShortBlocksOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+
+# Namespaces
+NamespaceIndentation: All
+
+# Formatting behavior
+ReflowComments: true
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+Language: Cpp
+Standard: c++20
+
+# Constructor parameter and initializer formatting
+BinPackParameters: false
+BinPackArguments: false
+AlignAfterOpenBracket: BlockIndent
+PackConstructorInitializers: Never
+BreakConstructorInitializers: BeforeComma
+ConstructorInitializerIndentWidth: 4
+ContinuationIndentWidth: 4
+IndentWrappedFunctionNames: false
+AlwaysBreakAfterReturnType: None
+AlwaysBreakAfterDefinitionReturnType: None  # Also recommended for definitions
+
+# Include handling - do not automatically reorder includes (leave to maintainer decision)
+SortIncludes: false
+IncludeBlocks: Preserve
+
+# Alignment / readability
+AlignConsecutiveAssignments: false
+AlignConsecutiveDeclarations: false
+
+# Access modifier indentation
+AccessModifierOffset: -4
+
+# Keep preprocessor directives tidy
+IndentCaseLabels: false
+
+# Keep generated diffs predictable
+AllowShortEnumsOnASingleLine: false
+ConstructorInitializerAllOnOneLineOrOnePerLine: true
+
+# Template keyword spacing
+SpaceAfterTemplateKeyword: false

@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/ContinueTranslator.Cli/ContinueTranslator.Cli.csproj" />
+    <Project Path="src/ContinueTranslator.Core/ContinueTranslator.Core.csproj" />
+    <Project Path="src/ContinueTranslator.Tests/ContinueTranslator.Tests.csproj" />
+  </Folder>
+</Solution>

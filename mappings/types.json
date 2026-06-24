@@ -1,0 +1,11 @@
+{
+  "string":        "string",
+  "number":        "double",
+  "boolean":       "bool",
+  "any":           "object",
+  "unknown":       "object",
+  "void":          "void",
+  "Promise<T>":    "Task<T>",
+  "Array<T>":      "List<T>",
+  "Record<K,V>":   "Dictionary<K,V>"
+}

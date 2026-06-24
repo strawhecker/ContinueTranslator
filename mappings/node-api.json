@@ -1,0 +1,9 @@
+{
+  "fs.readFile":   "System.IO.File.ReadAllTextAsync",
+  "fs.writeFile":  "System.IO.File.WriteAllTextAsync",
+  "fs.exists":     "System.IO.File.Exists",
+  "path.join":     "System.IO.Path.Combine",
+  "path.dirname":  "System.IO.Path.GetDirectoryName",
+  "process.env":   "System.Environment.GetEnvironmentVariable",
+  "console.log":   "System.Diagnostics.Debug.WriteLine"
+}
