@@ -54,12 +54,14 @@ internal sealed partial class MappingEngine
             return import with { ModuleSpecifier = mapped };
 
         // Try npm-package map on the module specifier.
-        if (_npmPackage.TryResolve(import.ModuleSpecifier, out string dotNetType))
+        if (!string.IsNullOrWhiteSpace(import.ModuleSpecifier) &&
+            _npmPackage.TryResolve(import.ModuleSpecifier, out string dotNetType))
             return import with { ModuleSpecifier = dotNetType };
 
         // Try stripping leading '@' scope prefix (e.g. "@scope/pkg" → "pkg").
         string bare = import.ModuleSpecifier.TrimStart('@').Split('/')[^1];
-        if (_npmPackage.TryResolve(bare, out string dotNetType2))
+        if (!string.IsNullOrWhiteSpace(bare) &&
+            _npmPackage.TryResolve(bare, out string dotNetType2))
             return import with { ModuleSpecifier = dotNetType2 };
 
         return import;
@@ -199,6 +201,12 @@ internal sealed partial class MappingEngine
     /// </summary>
     private string ResolveName(string name, out bool resolved)
     {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            resolved = false;
+            return name;
+        }
+
         // TypeMap covers TS primitives and well-known generics.
         string mapped = _typeMap.Resolve(name);
         if (!string.Equals(mapped, name, StringComparison.Ordinal))
